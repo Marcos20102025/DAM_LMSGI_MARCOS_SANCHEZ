@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE cifp SYSTEM "1_1_cifp_dtd.dtd">
+
+<cifp>
+
+    <alumne id = "A1">
+      <nom></nom>
+      <llinatges></llinatges>
+		  <data_naixement></data_naixement>
+		  <adreça></adreça>
+		  <data_matricula></data_matricula>
+		  <curs tipo ="DAM"></curs>
+    </alumne>
+    
+    <profesor id = "P2">
+      <nom></nom>
+	  <llinatges></llinatges>
+	  <data_naixement></data_naixement>
+	  <adreça></adreça>
+	  <data_incorporacio></data_incorporacio>
+	  <departament tipo ="informatica"></departament>
+	  
+	  <assignatura id_assignatura ="L3">
+		  <nom_assignatura cicle ="DAM"></nom_assignatura>
+		  <data_inici></data_inici>
+		  <data_final></data_final>
+	  </assignatura>
+    </profesor>
+
+
+</cifp>
