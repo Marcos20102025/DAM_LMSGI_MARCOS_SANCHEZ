@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+<!--definimos el elemento principal cifp-->
+  <xs:element name="cifp">
+    <xs:complexType>
+     <xs:sequence minOccurs="0" maxOccurs="unbounded"> <!--definimos las ocurrencias de los elementos entre 0 e infinito. Similar a * de dtd-->
+        <xs:element name="alumne" />
+        <xs:element name="profesor" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <!--definimos el elemento alumne-->
+  <xs:element name="alumne">
+    <xs:complexType>
+     <xs:sequence><!--definimos las ocurrencias de los elementos entre 0 e infinito. Similar al comportamiento del * en dtd-->
+        <xs:element name="nom"/>
+        <xs:element name="llinatges"/>
+        
+          <xs:sequence minOccurs="0">  <!--es posible que las ocurrencies mínimas sean 0, no existan. Equivale a ? en DTD-->
+                 <xs:element name="data_naixement" />
+                 <xs:element name="correu" />
+                 <xs:element name="telefon" />
+                 <xs:element name="adreça" />
+          </xs:sequence>
+        
+        <xs:element name="data_matricula" />
+        <xs:element name="curs"/>
+        
+      </xs:sequence>
+      
+    <!--definimos atributos de elemento alumne. El id será un entero, pero de esta forma no tiene porqué ser único-->
+    <xs:attribute name="id" type="xs:integer"  use="required" /><!--alumne tiene un atributo id, de tipo integer i obligatorio-->  
+      
+    </xs:complexType>
+    </xs:element>
+      <!--definimos elementos de los elementos comunes de alumne y profesor-->
+
+    <xs:element name="nom" type="xs:string"/>  
+
+    <xs:element name="llinatges" type="xs:string"/>  
+
+    <xs:element name="data_naixement" type="xs:string"/>  
+
+    <xs:element name="correu" type="xs:string"/>  
+
+    <xs:element name="telefon" type="xs:string"/>
+
+    <xs:element name="adreça" type="xs:string"/>
+   
+   <!--definimos elementos espedíficos del elemento alumne -->
+   
+    <xs:element name="data_matricula" type="xs:string"/>
+    
+    <xs:element name="curs">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+              <xs:enumeration value="DAM"/>
+              <xs:enumeration value="DAW"/>
+              <xs:enumeration value="ASIX"/>
+              <xs:enumeration value="SMX"/>
+              <xs:enumeration value="SEIA"/>
+              <xs:enumeration value="ER"/>
+              <xs:enumeration value="AUT"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+  </xs:element>
+  
+  
+  <xs:element name="profesor">
+    <xs:complexType>
+     <xs:sequence ><!--definimos las ocurrencias de los elementos entre 0 e infinito. Similar a * de dtd-->
+        <xs:element name="nom"/>
+        <xs:element name="llinatges"/>
+        <xs:sequence minOccurs="0">  <!--es posible que las ocurrencies mínimas sean 0, no existan. Equivale a ? en DTD-->
+                 <xs:element name="data_naixement" />
+                 <xs:element name="correu" />
+                 <xs:element name="telefon" />
+                 <xs:element name="adreça" />
+        </xs:sequence>
+        
+        <xs:element name="data_incorporacio"/>
+        <xs:element name="departament"/>
+        
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="assignatura"/>
+		</xs:sequence>
+            
+      </xs:sequence>
+   
+      <!--definimos atributos de elemento profesor cifp-->
+      <xs:attribute name="id" type="xs:integer"  use="required" /><!--alumne tiene un atributo id, de tipo integer i obligatorio-->  
+      
+    </xs:complexType>
+  </xs:element>
+     
+  <!--definimos elementos especifícos de elemento profesor cifp-->
+ 
+  <xs:element name="data_incorporacio" type="xs:string"/>
+    
+    <xs:element name="departament">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+              <xs:enumeration value="INFORMATICA"/>
+              <xs:enumeration value="ELECTRICIDAD"/>
+              <xs:enumeration value="AUTOMOCION"/>
+          </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  
+	<xs:element name="assignatura">
+	  <xs:complexType>
+	  
+		<xs:sequence>
+			<xs:element name="nom_assignatura"/>
+			<xs:element name="data_inici"/>
+			<xs:element name="data_final"/>
+		</xs:sequence>
+					
+		<xs:attribute name="id_assignatura" type="xs:integer" use="required"/>
+					
+	  </xs:complexType>
+	</xs:element>
+			 
+	<xs:element name="nom_assignatura">
+		<xs:complexType>
+			 <xs:attribute name="cicle" use="required">
+				      <xs:simpleType>
+					<xs:restriction base="xs:string">
+					  <xs:enumeration value="DAM"/>
+					  <xs:enumeration value="DAW"/>
+					  <xs:enumeration value="ASIX"/>
+					  <xs:enumeration value="SMX"/>
+					  <xs:enumeration value="SEIA"/>
+					  <xs:enumeration value="ER"/>
+					  <xs:enumeration value="AUT"/>
+					</xs:restriction>
+				  </xs:simpleType>
+				
+				
+				
+			</xs:attribute>
+	  </xs:complexType>
+	</xs:element>
+	
+	 <xs:element name="data_inici" type="xs:string"/>
+	  <xs:element name="data_final" type="xs:string"/>
+  
+     
+</xs:schema>
